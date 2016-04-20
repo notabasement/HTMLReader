@@ -432,7 +432,7 @@ HTMLSelectorPredicateGen isRootPredicate(void)
 	};
 }
 
-NSNumber * __nullable parseNumber(NSString *number, NSInteger defaultValue)
+NSNumber * __nullable htmlReader_parseNumber(NSString *number, NSInteger defaultValue)
 {
     // Strip whitespace so -isAtEnd check below answers "was this a valid integer?"
     number = [number stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
@@ -1000,8 +1000,8 @@ HTMLNthExpression HTMLNthExpressionFromString(NSString *string)
 		// No Ns or multiple Ns, fail
 		return HTMLNthExpressionInvalid;
 	} else if (valueSplit.count == 2) {
-		NSNumber *numberOne = parseNumber(valueSplit[0], 1);
-		NSNumber *numberTwo = parseNumber(valueSplit[1], 0);
+		NSNumber *numberOne = htmlReader_parseNumber(valueSplit[0], 1);
+		NSNumber *numberTwo = htmlReader_parseNumber(valueSplit[1], 0);
 		
 		if ([valueSplit[0] isEqualToString:@"-"] && numberTwo) {
 			// "n" was defined, and only "-" was given as a multiplier
@@ -1012,7 +1012,7 @@ HTMLNthExpression HTMLNthExpressionFromString(NSString *string)
 			return HTMLNthExpressionInvalid;
 		}
 	} else {
-		NSNumber *number = parseNumber(valueSplit[0], 1);
+		NSNumber *number = htmlReader_parseNumber(valueSplit[0], 1);
 		
 		// "n" not found, use whole string as b
 		return HTMLNthExpressionMake(0, number.integerValue);
