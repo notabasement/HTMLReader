@@ -2,7 +2,15 @@
 
 ## [Unreleased]
 
+## [2.0.5][]
+* Fix `bump-version` script to save `CFBundleVersion` as a string (not a number) in `Info.plist`. (Fixes #74.)
+
+## [2.0.4][]
+
+* Fix a compiler warning new to Xcode 8.3.
+
 ## [2.0.3][]
+
 * Move tests folder to support Swift 3's Package Manager.
 
 ## [2.0.2][]
@@ -108,7 +116,9 @@
 * A new document initializer, `-[HTMLDocument initWithData:contentTypeHeader:]`, detects the character encoding as a browser would. This is the ideal initializer for HTML documents fetched over the network, or any other time when the character encoding isn't previously known. Note that HTML does not blindly use the encoding specified by the HTTP `Content-Type` header, so this initializer is still superior to parsing the `Content-Type` yourself.
 
 
-[Unreleased]: https://github.com/nolanw/HTMLReader/compare/v2.0.3...HEAD
+[Unreleased]: https://github.com/nolanw/HTMLReader/compare/v2.0.5...HEAD
+[2.0.5]: https://github.com/nolanw/HTMLReader/compare/v2.0.4...v2.0.5
+[2.0.4]: https://github.com/nolanw/HTMLReader/compare/v2.0.3...v2.0.4
 [2.0.3]: https://github.com/nolanw/HTMLReader/compare/v2.0.2...v2.0.3
 [2.0.2]: https://github.com/nolanw/HTMLReader/compare/v2.0.1...v2.0.2
 [2.0.1]: https://github.com/nolanw/HTMLReader/compare/v2.0...v2.0.1
